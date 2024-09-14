@@ -30,12 +30,14 @@ public class MyApp {
         });
     }
 
+    private static Timer timer;
+
     private static void handlePageSwitch(ReferenceWindow referenceWindow, String[] currentPage, String[] nextPage) {
         // This method could be triggered by events or other mechanisms
         // Example page switch logic
-        while (true) {
+        {
 
-            new Timer(500, e -> {
+            timer = new Timer(500, e -> {
                 if (!currentPage[0].equals(nextPage[0])) {
                     switch (nextPage[0]) {
                         case "Greeting":
@@ -58,8 +60,11 @@ public class MyApp {
                             break;
                     }
                 }
-                System.out.println("Current page: " + currentPage[0]);
-            }).start();
+                // System.out.println("Current page: " + currentPage[0]);
+            });
+            timer.start();
+            timer.setRepeats(true);
+
         }
     }
 }

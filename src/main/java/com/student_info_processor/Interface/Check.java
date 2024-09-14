@@ -2,6 +2,7 @@ package com.student_info_processor.Interface;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JButton;
 
 public class Check extends Window {
 
@@ -15,7 +16,14 @@ public class Check extends Window {
 
         JPanel panel = new JPanel();
         JLabel label = new JLabel("Check Page");
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(80, 200, 95, 30);
+        backButton.addActionListener(e -> {
+            nextPage[0] = "Greeting";
+        });
+
         panel.add(label);
+        frame.add(backButton);
         frame.add(panel);
 
         // debugger

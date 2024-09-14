@@ -27,11 +27,11 @@ public class Greeting extends Window {
 
             nextPage[0] = "Check";
 
-            JOptionPane.showMessageDialog(null, "Check button clicked");
+            //JOptionPane.showMessageDialog(null, "Check button clicked");
         });
         signInButton.setBounds(200, 200, 95, 30);
         signInButton.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, "Sign In button clicked");
+            //JOptionPane.showMessageDialog(null, "Sign In button clicked");
         });
         panel.add(label);
         frame.add(chechkButton);
