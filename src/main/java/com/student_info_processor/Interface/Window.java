@@ -3,35 +3,26 @@ package com.student_info_processor.Interface;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Window {
     // fields
-    private JFrame frame;
+    protected JFrame frame;
 
     // constructor
 
-    public Window(String title) {
-        System.out.println("Window of title " + title);
+    public Window(int width, int height, String title) {
+        System.out.println("Window of title " + title + "and size " + width + " x " + height);
         frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 300);
+        frame.setSize(width, height);
         frame.setVisible(true);
     }
 
-    public Window(int a, int b, String title) {
-        System.out.println("Window of title " + title + "and size " + a + " x " + b);
-        frame = new JFrame(title);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(a, b);
-        frame.setVisible(true);
-    }
-
-    // methods
-
-    public int windowOut() {
-        System.out.println("WindowOut");
-        return 0;
-    }
+    // window concerned methods
 
     public void windowClose() {
         System.out.println("WindowClose of title " + frame.getTitle());
@@ -48,4 +39,12 @@ public class Window {
         frame.setVisible(true);
     }
 
+    // buttons issue
+
+    public void add_button(String button_name) {
+        JButton button = new JButton(button_name);
+        frame.add(button);
+    }
+
 }
+
