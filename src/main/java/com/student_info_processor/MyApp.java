@@ -1,16 +1,80 @@
 package com.student_info_processor;
 
-import javax.swing.SwingUtilities;
-
+import javax.swing.*;
+import com.student_info_processor.Interface.Check;
 import com.student_info_processor.Interface.Greeting;
 import com.student_info_processor.Interface.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MyApp {
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            Greeting greeting_window = new Greeting(500, 500, "Greeting");
-            greeting_window.config();
-        });
 
+    public static void main(String[] args) {
+
+        SwingUtilities.invokeLater(() -> {
+            // Create initial page and window
+            String[] currentPage = { "Greeting" };
+            String[] nextPage = { "Greeting" };
+
+            Window mainWindow = new Greeting(400, 400, "Student Info Processor", nextPage, currentPage);
+            mainWindow.configWindow();
+
+            // Create a ReferenceWindow instance
+            ReferenceWindow referenceWindow = new ReferenceWindow(mainWindow);
+
+            // Handle page switching
+            new Thread(() -> handlePageSwitch(referenceWindow, currentPage, nextPage)).start();
+
+            mainWindow = referenceWindow.window;
+
+        });
+    }
+
+    private static void handlePageSwitch(ReferenceWindow referenceWindow, String[] currentPage, String[] nextPage) {
+        // This method could be triggered by events or other mechanisms
+        // Example page switch logic
+        while (true) {
+
+            new Timer(500, e -> {
+                if (!currentPage[0].equals(nextPage[0])) {
+                    switch (nextPage[0]) {
+                        case "Greeting":
+                            currentPage[0] = "Greeting";
+                            Window greeting = new Greeting(400, 400, "Student Info Processor", nextPage, currentPage);
+                            referenceWindow.updateWindow(greeting);
+                            break;
+
+                        case "Check":
+                            currentPage[0] = "Check";
+                            Window check = new Check(400, 400, "Check", nextPage, currentPage);
+                            referenceWindow.updateWindow(check);
+                            break;
+
+                        case "Closing":
+                            System.exit(0);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+                System.out.println("Current page: " + currentPage[0]);
+            }).start();
+        }
+    }
+}
+
+class ReferenceWindow {
+    public Window window;
+
+    public ReferenceWindow(Window window) {
+        this.window = window;
+    }
+
+    public void updateWindow(Window newWindow) {
+        this.window.windowClose(); // Close current window
+        this.window = newWindow; // Set new window
+        this.window.configWindow();
+        // Show new window
     }
 }

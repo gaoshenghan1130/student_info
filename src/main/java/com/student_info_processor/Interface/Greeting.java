@@ -15,13 +15,18 @@ public class Greeting extends Window {
     JButton chechkButton = new JButton("Check");
     JButton signInButton = new JButton("Sign In");
 
-    public Greeting(int a, int b, String title) {
-        super(a, b, title);
+    public Greeting(int a, int b, String title, String[] nextPage, String[] currentPage) {
+        super(a, b, title, nextPage, currentPage);
     }
 
+    @Override
     public void config() {
+        System.out.println("Config of title " + frame.getTitle());
         chechkButton.setBounds(80, 200, 95, 30);
         chechkButton.addActionListener(e -> {
+
+            nextPage[0] = "Check";
+
             JOptionPane.showMessageDialog(null, "Check button clicked");
         });
         signInButton.setBounds(200, 200, 95, 30);
@@ -32,6 +37,12 @@ public class Greeting extends Window {
         frame.add(chechkButton);
         frame.add(signInButton);
         frame.add(panel);
+        if (!curPage[0].equals("Greeting")) {
+            System.out.println("Greeting page is not visible" + curPage);
+            frame.setVisible(false);
+        } else {
+            frame.setVisible(true);
+        }
     }
 
 }
