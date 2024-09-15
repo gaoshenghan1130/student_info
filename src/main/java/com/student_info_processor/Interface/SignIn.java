@@ -1,5 +1,7 @@
 package com.student_info_processor.Interface;
 
+import com.student_info_processor.SQL.SQL_Interface;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -8,10 +10,12 @@ import javax.swing.event.DocumentListener;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import java.sql.Connection;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
-public class SignIn extends Window {
+public class SignIn extends Window implements SQL_Interface {
     public SignIn(int width, int height, String title, String[] nextPage, String[] currentPage) {
         super(width, height, title, nextPage, currentPage);
     }
@@ -22,25 +26,7 @@ public class SignIn extends Window {
 
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
-
         // name input
-        text_name.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(javax.swing.event.DocumentEvent e) {
-                System.out.println("Name: " + text_name.getText());
-            }
-
-            @Override
-            public void removeUpdate(javax.swing.event.DocumentEvent e) {
-                System.out.println("Name: " + text_name.getText());
-            }
-
-            @Override
-            public void changedUpdate(javax.swing.event.DocumentEvent e) {
-                System.out.println("Name: " + text_name.getText());
-            }
-
-        });
         panel_name.add(label_name);
         panel_name.add(text_name);
 
@@ -66,5 +52,23 @@ public class SignIn extends Window {
     JPanel panel_name = new JPanel();
     JLabel label_name = new JLabel("Input name here");
     JTextField text_name = new JTextField(20);
+
+    @Override
+    public void connect(String url, String user, String password) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void closeConnection(Connection conn) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void insertData(Connection conn) {
+        // TODO Auto-generated method stub
+    }
+    // TODO Auto-generated method stub
 
 }
