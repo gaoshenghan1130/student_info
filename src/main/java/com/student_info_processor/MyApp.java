@@ -4,8 +4,7 @@ import javax.swing.*;
 import com.student_info_processor.Interface.Check;
 import com.student_info_processor.Interface.Greeting;
 import com.student_info_processor.Interface.Window;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import com.student_info_processor.Interface.SignIn;
 
 public class MyApp {
 
@@ -54,6 +53,12 @@ public class MyApp {
 
                         case "Closing":
                             System.exit(0);
+                            break;
+
+                        case "SignIn":
+                            currentPage[0] = "SignIn";
+                            Window signIn = new SignIn(400, 400, "Sign In", nextPage, currentPage);
+                            referenceWindow.updateWindow(signIn);
                             break;
 
                         default:

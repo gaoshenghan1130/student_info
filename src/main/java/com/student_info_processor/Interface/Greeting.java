@@ -27,6 +27,7 @@ public class Greeting extends Window {
         });
         signInButton.setBounds(200, 200, 95, 30);
         signInButton.addActionListener(e -> {
+            nextPage[0] = "SignIn";
             // JOptionPane.showMessageDialog(null, "Sign In button clicked");
         });
         panel.add(label);
