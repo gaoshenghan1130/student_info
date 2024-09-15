@@ -13,8 +13,8 @@ public class MyApp {
 
         SwingUtilities.invokeLater(() -> {
             // Create initial page and window
-            String[] currentPage = { "Greeting" };
-            String[] nextPage = { "Greeting" };
+            String[] currentPage = { "Greeting" };// used to track the current page
+            String[] nextPage = { "Greeting" };// used to change the page inside each window
 
             Window mainWindow = new Greeting(400, 400, "Student Info Processor", nextPage, currentPage);
             mainWindow.configWindow();
