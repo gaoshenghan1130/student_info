@@ -50,7 +50,7 @@ public class Window {
                 // If the user confirms the close action, exit the application
                 if (response == JOptionPane.YES_OPTION) {
                     nextPage[0] = "Closing";
-                    System.exit(0); // Exit the application
+                    // Exit the application
                 }
             }
         });
@@ -68,11 +68,6 @@ public class Window {
     public Connection getConnection() {
         System.out.println("Connection of data base used");
         return conn;
-    }
-
-    public void setConnection(Connection conn) {
-        System.out.println("Connection of data base renewed");
-        this.conn = conn;
     }
 
 }

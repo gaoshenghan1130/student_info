@@ -1,16 +1,10 @@
 package com.student_info_processor;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.swing.*;
-import com.student_info_processor.Interface.Check;
-import com.student_info_processor.Interface.Connection_database;
-import com.student_info_processor.Interface.Greeting;
-import com.student_info_processor.Interface.Window;
-import com.student_info_processor.Interface.SignIn;
-import com.student_info_processor.Interface.DebugEngine;
-
-import com.student_info_processor.SQL.SQL_Method;
+import com.student_info_processor.Interface.*;
 
 public class MyApp {
 
@@ -73,15 +67,24 @@ public class MyApp {
 
                         case "SignIn":
                             currentPage[0] = "SignIn";
-                            referenceWindow.updateWindow(new SignIn(400, 400, "Sign In", nextPage, currentPage););
+                            referenceWindow.updateWindow(new SignIn(400, 400, "Sign In", nextPage, currentPage));
                             break;
 
                         case "DebugEngine":
                             currentPage[0] = "DebugEngine";
-                            referenceWindow.updateWindow(new DebugEngine(400, 400, "Bug report", nextPage, currentPage));
+                            referenceWindow
+                                    .updateWindow(new DebugEngine(400, 400, "Bug report", nextPage, currentPage));
                             break;
 
                         case "Closing":
+                            if (conn[0] != null) {
+                                try {
+                                    if (conn[0] != null)
+                                        conn[0].close();
+                                } catch (SQLException exceqtion) {
+                                    exceqtion.printStackTrace();
+                                }
+                            }
                             System.exit(0);
                             break;
 
