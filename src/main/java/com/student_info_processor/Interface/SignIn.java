@@ -5,7 +5,6 @@ import com.student_info_processor.SQL.SQL_Interface;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentListener;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -69,6 +68,5 @@ public class SignIn extends Window implements SQL_Interface {
     public void insertData(Connection conn) {
         // TODO Auto-generated method stub
     }
-    // TODO Auto-generated method stub
 
 }
