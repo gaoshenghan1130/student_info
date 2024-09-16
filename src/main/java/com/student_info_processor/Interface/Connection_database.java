@@ -3,6 +3,7 @@ package com.student_info_processor.Interface;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -52,7 +53,34 @@ public class Connection_database extends Window {
         JButton Confirm = new JButton("Confirm");
 
         Confirm.addActionListener(e -> {
-            nextPage[0] = "Greeting";
+            try {
+
+                String nurl;
+                if (url.getText().equals("")) {
+                    nurl = "jdbc:mysql://localhost:3306/test";
+                } else {
+                    nurl = user.getText();
+                }
+
+                String nuser;
+                if (user.getText().equals("")) {
+                    nuser = "root";
+                } else {
+                    nuser = user.getText();
+                }
+
+                Connection nconn = DriverManager.getConnection(nurl, nuser, password.getText());
+                this.conn = nconn;
+                System.out.println("Connection established");
+                nextPage[0] = "Greeting";
+            } catch (Exception e1) {
+                String[] temp = { "DebugEngine", "Connection failed" };
+                System.out.println("Connection failed");
+                nextPage[0] = "DebugEngine";
+                nextPage[1] = "Connection failed";
+                // e1.printStackTrace();
+            }
+
         });
 
         panel.add(Confirm);

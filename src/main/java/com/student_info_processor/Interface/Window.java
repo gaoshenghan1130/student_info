@@ -14,7 +14,8 @@ public class Window {
     // constructor
 
     public Window(int width, int height, String title, String[] nextPage, String[] currentPage) {
-        System.out.println("Window of title " + title + "and size " + width + " x " + height);
+        // System.out.println("Window of title " + title + "and size " + width + " x " +
+        // height);
         frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(width, height);
@@ -25,7 +26,14 @@ public class Window {
 
     // window concerned methods
 
-    public void configWindow() {
+    public void configWindow(Connection conn) {
+
+        // pass down connection
+        this.conn = conn;
+
+        if (this.conn == null) {
+            System.out.println("Conn is null for " + frame.getTitle());
+        }
 
         // first call the config method for the subclassess
         config();
@@ -57,16 +65,16 @@ public class Window {
     }
 
     public void config() {
-        System.out.println("Config of title " + frame.getTitle());
+        // System.out.println("Config of title " + frame.getTitle());
     }
 
     public void windowClose() {
-        System.out.println("WindowClose of title " + frame.getTitle());
+        // System.out.println("WindowClose of title " + frame.getTitle());
         frame.dispose();
     }
 
     public Connection getConnection() {
-        System.out.println("Connection of data base used");
+        // System.out.println("Connection of data base used");
         return conn;
     }
 

@@ -12,14 +12,15 @@ public class MyApp {
 
         SwingUtilities.invokeLater(() -> {
             // Create initial page and window
-            String[] currentPage = { "Connection" };// used to track the current page
-            String[] nextPage = { "Connection" };// used to change the page inside each window, the second element is
-                                                 // used
-                                                 // to pass data between windows(E.g. bug report)
-            Connection[] conn = { null };
+            String[] currentPage = { "Connection", "" };// used to track the current page
+            String[] nextPage = { "Connection", "" };// used to change the page inside each window, the second element
+                                                     // is
+                                                     // used
+                                                     // to pass data between windows(E.g. bug report)
+            Connection[] conn = { null, null };
 
             Window mainWindow = new Connection_database(400, 400, "Connection to database", nextPage, currentPage);
-            mainWindow.configWindow();
+            mainWindow.configWindow(conn[0]);
 
             // Create a ReferenceWindow instance
             ReferenceWindow referenceWindow = new ReferenceWindow(mainWindow);
@@ -41,13 +42,14 @@ public class MyApp {
         {
 
             timer = new Timer(500, e -> {
-                if (currentPage[0].equals("Connection") && (!nextPage[0].equals("Connection"))) {
+                if (currentPage[0].equals("Connection") && (!nextPage[0].equals("Connection"))
+                        && (!nextPage[0].equals("DebugEngine"))) {
                     conn[0] = referenceWindow.getWindow().getConnection();
+                    currentPage[0] = nextPage[0];
                     referenceWindow
                             .updateWindow(
-                                    new Connection_database(400, 400, "Connection", nextPage, currentPage));
-                }
-                if (!currentPage[0].equals(nextPage[0])) {
+                                    new Greeting(400, 400, "Greeting", nextPage, currentPage));
+                } else if (!currentPage[0].equals(nextPage[0])) {
                     switch (nextPage[0]) {
                         case "Connection":
                             currentPage[0] = "Connection";
@@ -62,7 +64,7 @@ public class MyApp {
 
                         case "Check":
                             currentPage[0] = "Check";
-                            referenceWindow.updateWindow(new Check(400, 400, "Check", nextPage, currentPage));
+                            referenceWindow.updateWindow(new Check(400, 400, "Data", nextPage, currentPage));
                             break;
 
                         case "SignIn":
@@ -109,9 +111,11 @@ class ReferenceWindow {
     }
 
     public void updateWindow(Window newWindow) {
+        Connection oldConn = this.window.getConnection();
+        System.out.println("oldConn: " + oldConn);
         this.window.windowClose(); // Close current window
         this.window = newWindow; // Set new window
-        this.window.configWindow();
+        this.window.configWindow(oldConn);
         // Show new window
     }
 
