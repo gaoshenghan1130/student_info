@@ -31,10 +31,9 @@ public class Window {
         // pass down connection
         this.conn = conn;
 
-
         // first call the config method for the subclassess
         config();
-        //System.out.println("Config window of title " + frame.getTitle());
+        // System.out.println("Config window of title " + frame.getTitle());
         // Set the default close operation to DO_NOTHING_ON_CLOSE
         // This prevents the window from closing automatically when the close button is
         // clicked
@@ -47,7 +46,7 @@ public class Window {
                 // Handle the window close event here
                 int response = JOptionPane.showConfirmDialog(
                         frame,
-                        "Are you sure you want to close the window?",
+                        "Are you sure you want to close the window?\nThis will close the application.",
                         "Confirm Exit",
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE);

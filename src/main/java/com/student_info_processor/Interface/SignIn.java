@@ -9,7 +9,6 @@ import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import javax.swing.BoxLayout;
