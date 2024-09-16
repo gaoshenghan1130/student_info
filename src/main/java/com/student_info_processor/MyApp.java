@@ -28,8 +28,6 @@ public class MyApp {
             // Handle page switching
             new Thread(() -> handlePageSwitch(referenceWindow, currentPage, nextPage, conn)).start();
 
-            mainWindow = referenceWindow.window;
-
         });
     }
 

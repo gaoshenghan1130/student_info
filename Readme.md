@@ -32,12 +32,12 @@
 
 ### Database
 
-- This project is only compatible with MYSQL database. The name of the database should be set as `test` and the table name is `student`. The table should have the following columns: `class_id`, `name`, and `age` and `score`.
+- This project is only compatible with MYSQL database. The name of the database should be set as `test` and the table name is `students`. The table should have the following columns: `class_id`, `name`, and `age` and `score`.
 
 - The following is the SQL command to create the table:
 
 ```sql
-CREATE TABLE student (
+CREATE TABLE students (
     id INT AUTO_INCREMENT PRIMARY KEY,
       class_id VARCHAR(255),
       name VARCHAR(255),
@@ -54,14 +54,5 @@ CREATE TABLE student (
 
 1. Insert student information
 2. Check student information
+
 (Currently the project only supports these two functions and might be updated in the future)
-
-
-
-
-
-
-
-
-
-
