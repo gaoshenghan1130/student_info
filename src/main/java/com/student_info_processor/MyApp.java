@@ -64,7 +64,7 @@ public class MyApp {
 
                         case "Check":
                             currentPage[0] = "Check";
-                            referenceWindow.updateWindow(new Check(400, 400, "Data", nextPage, currentPage));
+                            referenceWindow.updateWindow(new Check(400, 800, "Data", nextPage, currentPage));
                             break;
 
                         case "SignIn":
@@ -112,7 +112,7 @@ class ReferenceWindow {
 
     public void updateWindow(Window newWindow) {
         Connection oldConn = this.window.getConnection();
-        System.out.println("oldConn: " + oldConn);
+        // System.out.println("oldConn: " + oldConn);
         this.window.windowClose(); // Close current window
         this.window = newWindow; // Set new window
         this.window.configWindow(oldConn);

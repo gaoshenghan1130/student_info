@@ -17,7 +17,7 @@ public class Greeting extends Window {
 
     @Override
     public void config() {
-        System.out.println("Config of title " + frame.getTitle());
+        //System.out.println("Config of title " + frame.getTitle());
         chechkButton.setBounds(80, 200, 95, 30);
         chechkButton.addActionListener(e -> {
 

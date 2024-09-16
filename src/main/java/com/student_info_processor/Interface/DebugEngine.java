@@ -14,7 +14,7 @@ public class DebugEngine extends Window {
 
     @Override
     public void config() {
-        System.out.println("Config of title " + frame.getTitle());
+        //System.out.println("Config of title " + frame.getTitle());
         if (nextPage.length >= 2 && nextPage[0].equals("DebugEngine")) {
             // System.out.println(nextPage[0] + nextPage[1]);
             bugReport = nextPage[1];

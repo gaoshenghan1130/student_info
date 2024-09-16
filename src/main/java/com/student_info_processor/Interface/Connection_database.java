@@ -74,7 +74,6 @@ public class Connection_database extends Window {
                 System.out.println("Connection established");
                 nextPage[0] = "Greeting";
             } catch (Exception e1) {
-                String[] temp = { "DebugEngine", "Connection failed" };
                 System.out.println("Connection failed");
                 nextPage[0] = "DebugEngine";
                 nextPage[1] = "Connection failed";

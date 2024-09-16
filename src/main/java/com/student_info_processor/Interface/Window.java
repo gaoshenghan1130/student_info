@@ -31,13 +31,10 @@ public class Window {
         // pass down connection
         this.conn = conn;
 
-        if (this.conn == null) {
-            System.out.println("Conn is null for " + frame.getTitle());
-        }
 
         // first call the config method for the subclassess
         config();
-        System.out.println("Config window of title " + frame.getTitle());
+        //System.out.println("Config window of title " + frame.getTitle());
         // Set the default close operation to DO_NOTHING_ON_CLOSE
         // This prevents the window from closing automatically when the close button is
         // clicked
