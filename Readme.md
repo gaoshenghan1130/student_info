@@ -32,18 +32,19 @@
 
 ### Database
 
-- This project is only compatible with MYSQL database. The name of the database should be set as `test` and the table name is `students`. The table should have the following columns: `class_id`, `name`, and `age` and `score`.
+- This project is only compatible with MYSQL database. The name of the database should be set as `test` and the table name is `students`. The table should have the following columns: `class_id`, `name`, and `gender` and `score`.
 
 - The following is the SQL command to create the table:
 
 ```sql
 CREATE TABLE students (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-      class_id VARCHAR(255),
-      name VARCHAR(255),
-      age INT,
-      score INT
-);
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    class_id BIGINT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    gender VARCHAR(1) NOT NULL,
+    score INT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 ```
 
 - Or you can run the file `mysql-init-test-data.sql` in the project to create the table.

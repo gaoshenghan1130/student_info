@@ -17,7 +17,7 @@ public class Greeting extends Window {
 
     @Override
     public void config() {
-        //System.out.println("Config of title " + frame.getTitle());
+        // System.out.println("Config of title " + frame.getTitle());
         chechkButton.setBounds(80, 200, 95, 30);
         chechkButton.addActionListener(e -> {
 
@@ -34,12 +34,7 @@ public class Greeting extends Window {
         frame.add(chechkButton);
         frame.add(signInButton);
         frame.add(panel);
-        if (!curPage[0].equals("Greeting")) {
-            System.out.println("Greeting page is not visible" + curPage);
-            frame.setVisible(false);
-        } else {
-            frame.setVisible(true);
-        }
+
     }
 
 }

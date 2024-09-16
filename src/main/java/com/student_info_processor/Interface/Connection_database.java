@@ -5,11 +5,7 @@ import java.awt.FlowLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class Connection_database extends Window {
 
@@ -31,7 +27,7 @@ public class Connection_database extends Window {
         url.setPreferredSize(new Dimension(url.getWidth(), 30));
         JTextField user = new JTextField(20);
         user.setPreferredSize(new Dimension(user.getWidth(), 30));
-        JTextField password = new JTextField(20);
+        JPasswordField password = new JPasswordField(20);
         password.setPreferredSize(new Dimension(password.getWidth(), 30));
 
         JLabel url_label = new JLabel("URL");
@@ -74,6 +70,7 @@ public class Connection_database extends Window {
                 System.out.println("Connection established");
                 nextPage[0] = "Greeting";
             } catch (Exception e1) {
+                e1.printStackTrace();
                 System.out.println("Connection failed");
                 nextPage[0] = "DebugEngine";
                 nextPage[1] = "Connection failed";

@@ -41,7 +41,8 @@ public class MyApp {
 
             timer = new Timer(500, e -> {
                 if (currentPage[0].equals("Connection") && (!nextPage[0].equals("Connection"))
-                        && (!nextPage[0].equals("DebugEngine"))) {
+                        && (!nextPage[0].equals("DebugEngine")
+                                && (!nextPage[0].equals("Closing")))) {
                     conn[0] = referenceWindow.getWindow().getConnection();
                     currentPage[0] = nextPage[0];
                     referenceWindow
@@ -81,6 +82,9 @@ public class MyApp {
                                 try {
                                     if (conn[0] != null)
                                         conn[0].close();
+                                    if (referenceWindow.getWindow().getConnection() != null) {
+                                        referenceWindow.getWindow().getConnection().close();
+                                    }
                                 } catch (SQLException exceqtion) {
                                     exceqtion.printStackTrace();
                                 }
