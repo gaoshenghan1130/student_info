@@ -16,7 +16,6 @@ public class Check extends Window {
 
     public Check(int width, int height, String title, String[] nextPage, String[] currentPage) {
         super(width, height, title, nextPage, currentPage);
-
     }
 
     @Override
@@ -47,18 +46,17 @@ public class Check extends Window {
         }
 
         try {
-            String query = "SELECT * FROM students";
+            String query = "SELECT * FROM " + com.student_info_processor.Config.Config.TABLE_NAME;
 
             Statement stmt = conn.createStatement();
-            stmt.executeQuery(query);
             ResultSet rs = stmt.executeQuery(query);
 
             List<String[]> data = new ArrayList<>();// ensure that the data storage is dynamic (can store any number of
                                                     // rows)
-            String[] columns = new String[] { "id", "class_id", "name", "gender", "score" };
+            String[] columns = com.student_info_processor.Config.Config.COLUMNS;
 
             while (rs.next()) {
-                String[] row = new String[5]; // Since there are 5 columns
+                String[] row = new String[columns.length];
                 for (int i = 0; i < columns.length; i++) {
                     row[i] = rs.getString(columns[i]);
                 }
@@ -86,7 +84,5 @@ public class Check extends Window {
         } else {
             frame.setVisible(true);
         }
-
     }
-
 }

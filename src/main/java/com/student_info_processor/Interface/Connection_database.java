@@ -48,12 +48,11 @@ public class Connection_database extends Window {
 
         JButton Confirm = new JButton("Confirm");
 
-        Confirm.addActionListener(e -> {
+        Confirm.addActionListener(_ -> {
             try {
-
                 String nurl;
                 if (url.getText().equals("")) {
-                    nurl = "jdbc:mysql://localhost:3306/test";
+                    nurl = "jdbc:mysql://localhost:3306/" + com.student_info_processor.Config.Config.DEFAULT_DB;
                 } else {
                     nurl = user.getText();
                 }
@@ -64,8 +63,8 @@ public class Connection_database extends Window {
                 } else {
                     nuser = user.getText();
                 }
-
-                Connection nconn = DriverManager.getConnection(nurl, nuser, password.getText());
+                String npassword= String.valueOf(password.getPassword());
+                Connection nconn = DriverManager.getConnection(nurl, nuser, npassword);
                 this.conn = nconn;
                 System.out.println("Connection established");
                 nextPage[0] = "Greeting";
@@ -78,9 +77,7 @@ public class Connection_database extends Window {
             }
 
         });
-
         panel.add(Confirm);
-
         frame.setLayout(new FlowLayout());
         frame.add(panel);
     }
