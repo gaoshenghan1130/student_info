@@ -36,7 +36,8 @@
 
 ### Database
 
-- This project is only compatible with MYSQL database. The name of the database should be set as `test` and the table name is `students`. The table should have the following columns: `unique_name`, `name`, `point`. But you can change the database name and table name in the `./src/main/java/com/student_info_processor/Config/Config.java` file.
+- This project is only compatible with MYSQL database. The name of the database should be set as `pointSys`
+ and the table name is `users`. The table should have the following columns: `unique_name`, `name`, `point`. But you can change the database name and table name in the `./src/main/java/com/student_info_processor/Config/Config.java` file.
 
 ### Functions
 
